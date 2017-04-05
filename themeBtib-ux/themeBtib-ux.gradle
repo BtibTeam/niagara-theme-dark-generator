@@ -1,0 +1,23 @@
+description = "Btib Theme Active"
+niagaraModule {
+    moduleName="themeBtib"
+    preferredSymbol="toka"
+    runtimeProfile="ux"
+}
+jar {
+    from('src') {
+        include 'fonts/'
+        include 'fx/'
+        include 'hx/'
+        include 'imageOverrides/**/*.png'
+        include 'less/**/*.*'
+        include 'nss/'
+        include 'sprite/'
+        include 'ux/'
+    }
+    from ('.') {
+        include 'cssTemplate.mustache'
+        include 'Gruntfile.js'
+        include 'package.json'
+    }
+}

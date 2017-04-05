@@ -1,0 +1,56 @@
+@import './fonts.less';
+@import (reference) './palette.less';
+/*
+ Theme Rules for use with jquery.ContextMenu
+*/
+// Context menu ////////////////////////////////////////////////////////////////
+
+ul.context-menu-list {
+  .border-radius(6px);
+  .box-shadow(0 5px 10px rgba(0, 0, 0, 0.7));
+
+  background-color: @context-menu-bg;
+
+  padding: 8px 12px;
+  border: 0;
+
+  &#_hxMenu .icon{
+    display: none;
+  }
+
+  .context-menu-item {
+    background-color: @context-menu-bg;
+    color: @context-menu-fg;
+
+    .font-family;
+    .font-size(13);
+    font-weight: normal;
+
+    .context-menu-item .icon {
+      display: none;
+    }
+
+    &.hover {
+      background-color: @neutral-2;
+      color: @secondary-1;
+      font-weight: normal;
+      margin-left: -12px;
+      margin-right: -12px;
+      padding-left: 14px;
+      padding-right: 14px;
+    }
+  }
+
+  .context-menu-submenu:after {
+    content: "\f0da";
+    font-family: "FontAwesome";
+    .font-size(16);
+    color: @neutral-3;
+    position: relative;
+    float: right;
+    height: 0;
+    padding-top: 1px;
+    clear: both;
+    z-index: 1;
+  }
+}
