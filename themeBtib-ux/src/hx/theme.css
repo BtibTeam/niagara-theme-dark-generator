@@ -65,6 +65,117 @@ ul.context-menu-list .context-menu-submenu:after {
   clear: both;
   z-index: 1;
 }
+/* style the HxPx Button with default font color */
+.hxpx-button {
+  color: #212121;
+}
+/* add default style to the button element and sub-elements */
+.hxpx-button,
+.hxpx-background-image,
+.hxpx-background {
+  -webkit-border-radius: 4px 4px 4px 4px;
+  -moz-border-radius: 4px 4px 4px 4px;
+  border-radius: 4px 4px 4px 4px;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-transition: background-color 0.2s ease;
+  -moz-transition: background-color 0.2s ease;
+  -o-transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease;
+}
+/* create default border */
+.hxpx-border {
+  -webkit-border-radius: 4px 4px 4px 4px;
+  -moz-border-radius: 4px 4px 4px 4px;
+  border-radius: 4px 4px 4px 4px;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #EEEEEE !important;
+}
+/* handle hover state */
+.hxpx-button:not(.pxDisabled):hover > table {
+  -moz-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.175);
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.175);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.175);
+  background-color: rgba(0, 0, 0, 0.075);
+}
+/* handle active & toggle state */
+.hxpx-button:not(.pxDisabled):active > table,
+.hxpx-button.active:not(.pxDisabled) > table,
+.hxpx-button.hxpx-toggled > table {
+  -moz-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.25);
+}
+/*# sourceMappingURL=/module/themeBtib/less/maps/hx.map */
+@font-face {
+  font-family: 'SourceSansPro';
+  font-weight: normal;
+  src: local('?'), url('/module/themeBtib/fonts/SourceSansPro-Regular.otf.woff') format('woff'), url('/module/themeBtib/fonts/SourceSansPro-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'SourceSansPro';
+  font-weight: bold;
+  src: local('?'), url('/module/themeBtib/fonts/SourceSansPro-Semibold.otf.woff') format('woff'), url('/module/themeBtib/fonts/SourceSansPro-Semibold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'SourceSansPro';
+  font-weight: 100;
+  src: local('?'), url('/module/themeBtib/fonts/SourceSansPro-Light.otf.woff') format('woff'), url('/module/themeBtib/fonts/SourceSansPro-Light.ttf') format('truetype');
+}
+/*
+ Theme Rules for use with jquery.ContextMenu
+*/
+ul.context-menu-list {
+  -webkit-border-radius: 6px 6px 6px 6px;
+  -moz-border-radius: 6px 6px 6px 6px;
+  border-radius: 6px 6px 6px 6px;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+  background-color: #333333;
+  padding: 8px 12px;
+  border: 0;
+}
+ul.context-menu-list#_hxMenu .icon {
+  display: none;
+}
+ul.context-menu-list .context-menu-item {
+  background-color: #333333;
+  color: #ffffff;
+  font-family: SourceSansPro, sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+}
+ul.context-menu-list .context-menu-item .context-menu-item .icon {
+  display: none;
+}
+ul.context-menu-list .context-menu-item.hover {
+  background-color: #ebebeb;
+  color: #3d3d3d;
+  font-weight: normal;
+  margin-left: -12px;
+  margin-right: -12px;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+ul.context-menu-list .context-menu-submenu:after {
+  content: "\f0da";
+  font-family: "FontAwesome";
+  font-size: 16px;
+  color: #c1c1c1;
+  position: relative;
+  float: right;
+  height: 0;
+  padding-top: 1px;
+  clear: both;
+  z-index: 1;
+}
 body {
   font-family: SourceSansPro, sans-serif;
   font-size: 13px;
@@ -263,5 +374,223 @@ div.schedule-HxScheduler-dayEvent {
   -moz-background-clip: padding-box;
   background-clip: padding-box;
   border: 0;
+}
+/*# sourceMappingURL=/module/themeBtib/less/maps/hx.map */
+@font-face {
+  font-family: 'SourceSansPro';
+  font-weight: normal;
+  src: local('?'), url('/module/themeBtib/fonts/SourceSansPro-Regular.otf.woff') format('woff'), url('/module/themeBtib/fonts/SourceSansPro-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'SourceSansPro';
+  font-weight: bold;
+  src: local('?'), url('/module/themeBtib/fonts/SourceSansPro-Semibold.otf.woff') format('woff'), url('/module/themeBtib/fonts/SourceSansPro-Semibold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'SourceSansPro';
+  font-weight: 100;
+  src: local('?'), url('/module/themeBtib/fonts/SourceSansPro-Light.otf.woff') format('woff'), url('/module/themeBtib/fonts/SourceSansPro-Light.ttf') format('truetype');
+}
+/*
+ Theme Rules for use with jquery.ContextMenu
+*/
+ul.context-menu-list {
+  -webkit-border-radius: 6px 6px 6px 6px;
+  -moz-border-radius: 6px 6px 6px 6px;
+  border-radius: 6px 6px 6px 6px;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+  background-color: #333333;
+  padding: 8px 12px;
+  border: 0;
+}
+ul.context-menu-list#_hxMenu .icon {
+  display: none;
+}
+ul.context-menu-list .context-menu-item {
+  background-color: #333333;
+  color: #ffffff;
+  font-family: SourceSansPro, sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+}
+ul.context-menu-list .context-menu-item .context-menu-item .icon {
+  display: none;
+}
+ul.context-menu-list .context-menu-item.hover {
+  background-color: #ebebeb;
+  color: #3d3d3d;
+  font-weight: normal;
+  margin-left: -12px;
+  margin-right: -12px;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+ul.context-menu-list .context-menu-submenu:after {
+  content: "\f0da";
+  font-family: "FontAwesome";
+  font-size: 16px;
+  color: #c1c1c1;
+  position: relative;
+  float: right;
+  height: 0;
+  padding-top: 1px;
+  clear: both;
+  z-index: 1;
+}
+div.enhancedBoundTable {
+  height: 100%;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+}
+div.enhancedBoundTable .dataTables_wrapper {
+  padding: 15px;
+}
+div.enhancedBoundTable .dataTables_length input,
+div.enhancedBoundTable .dataTables_length select {
+  font: inherit;
+  background: none;
+}
+div.enhancedBoundTable table {
+  /* Necessary when BQL query is null */
+  height: 100%;
+  margin-bottom: 0;
+}
+div.enhancedBoundTable table th {
+  background: none;
+}
+div.enhancedBoundTable table tr {
+  cursor: pointer;
+}
+div.enhancedBoundTable table tr:nth-of-type(even) td {
+  background: none;
+}
+div.enhancedBoundTable table tr.query-null td {
+  text-align: center;
+  vertical-align: middle;
+  cursor: auto;
+  border: none;
+}
+div.enhancedBoundTable .dt-buttons {
+  margin-left: 7px;
+}
+div.enhancedBoundTable .dt-buttons a {
+  padding: 4px 6px;
+}
+div.enhancedBoundTable .dataTables_paginate {
+  text-align: center !important;
+}
+/*# sourceMappingURL=/module/themeBtib/less/maps/hx.map */
+@font-face {
+  font-family: 'SourceSansPro';
+  font-weight: normal;
+  src: local('?'), url('/module/themeBtib/fonts/SourceSansPro-Regular.otf.woff') format('woff'), url('/module/themeBtib/fonts/SourceSansPro-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'SourceSansPro';
+  font-weight: bold;
+  src: local('?'), url('/module/themeBtib/fonts/SourceSansPro-Semibold.otf.woff') format('woff'), url('/module/themeBtib/fonts/SourceSansPro-Semibold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'SourceSansPro';
+  font-weight: 100;
+  src: local('?'), url('/module/themeBtib/fonts/SourceSansPro-Light.otf.woff') format('woff'), url('/module/themeBtib/fonts/SourceSansPro-Light.ttf') format('truetype');
+}
+/*
+ Theme Rules for use with jquery.ContextMenu
+*/
+ul.context-menu-list {
+  -webkit-border-radius: 6px 6px 6px 6px;
+  -moz-border-radius: 6px 6px 6px 6px;
+  border-radius: 6px 6px 6px 6px;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+  background-color: #333333;
+  padding: 8px 12px;
+  border: 0;
+}
+ul.context-menu-list#_hxMenu .icon {
+  display: none;
+}
+ul.context-menu-list .context-menu-item {
+  background-color: #333333;
+  color: #ffffff;
+  font-family: SourceSansPro, sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+}
+ul.context-menu-list .context-menu-item .context-menu-item .icon {
+  display: none;
+}
+ul.context-menu-list .context-menu-item.hover {
+  background-color: #ebebeb;
+  color: #3d3d3d;
+  font-weight: normal;
+  margin-left: -12px;
+  margin-right: -12px;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+ul.context-menu-list .context-menu-submenu:after {
+  content: "\f0da";
+  font-family: "FontAwesome";
+  font-size: 16px;
+  color: #c1c1c1;
+  position: relative;
+  float: right;
+  height: 0;
+  padding-top: 1px;
+  clear: both;
+  z-index: 1;
+}
+div.widget-spinner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+}
+div.spinner {
+  margin: 50vh auto 0;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 40px;
+  text-align: center;
+  font-size: 10px;
+}
+div.spinner > div {
+  background-color: #333;
+  height: 100%;
+  width: 6px;
+  display: inline-block;
+  -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+  animation: sk-stretchdelay 1.2s infinite ease-in-out;
+}
+div.spinner .rect2 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+div.spinner .rect3 {
+  -webkit-animation-delay: -1s;
+  animation-delay: -1s;
+}
+div.spinner .rect4 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+div.spinner .rect5 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
 }
 /*# sourceMappingURL=/module/themeBtib/less/maps/hx.map */

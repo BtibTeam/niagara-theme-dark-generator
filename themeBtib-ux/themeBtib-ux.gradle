@@ -9,6 +9,7 @@ jar {
         include 'fonts/'
         include 'fx/'
         include 'hx/'
+        include 'image/**/*.png'
         include 'imageOverrides/**/*.png'
         include 'less/**/*.*'
         include 'nss/'
