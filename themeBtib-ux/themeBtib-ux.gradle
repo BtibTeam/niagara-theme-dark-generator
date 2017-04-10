@@ -1,4 +1,4 @@
-description = "Btib Theme Generator"
+description = "Default theme for Btib modules"
 niagaraModule {
     moduleName="themeBtib"
     preferredSymbol="toka"
