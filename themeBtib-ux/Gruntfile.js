@@ -83,7 +83,7 @@ module.exports = function runGrunt(grunt) {
           sourceMapURL: '/module/themeBtib/less/maps/hx.map'
         },
         files: {
-          'src/hx/theme.css': 'src/less/hx.less'
+          'src/hx/theme.css': 'src/less/hx/*'
         }
       },
       ux: {
@@ -92,7 +92,7 @@ module.exports = function runGrunt(grunt) {
           sourceMapURL: '/module/themeBtib/less/maps/ux.map'
         },
         files: {
-          'src/ux/theme.css': 'src/less/ux.less'
+          'src/ux/theme.css': 'src/less/ux/*'
         }
       }
     },

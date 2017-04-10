@@ -40,3 +40,10 @@
 .abs-position(@top: 0, @right: @top, @bottom: @top, @left: @right) {
   top: @top; right: @right; bottom: @bottom; left: @left;
 }
+
+.transition(@transition) {
+  -webkit-transition: @arguments;
+  -moz-transition: @arguments;
+  -o-transition: @arguments;
+  transition: @arguments;
+}

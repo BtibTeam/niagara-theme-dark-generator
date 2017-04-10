@@ -1,0 +1,31 @@
+@import (reference) '../palette.less';
+@import (reference) '../mixins.less';
+@import '../contextMenu.less';
+
+/* style the HxPx Button with default font color */
+.hxpx-button {
+  color: #212121;
+}
+
+/* add default style to the button element and sub-elements */
+.hxpx-button, .hxpx-background-image, .hxpx-background {
+  .border-radius(4px);
+  .transition(background-color 0.2s ease);
+}
+
+/* create default border */
+.hxpx-border {
+  .border-radius(4px);
+  border: 1px solid #EEEEEE !important;
+}
+
+/* handle hover state */
+.hxpx-button:not(.pxDisabled):hover > table {
+  .box-shadow(inset 0 3px 5px rgba(0,0,0,.175));
+  background-color: rgba(0,0,0,0.075);
+}
+
+/* handle active & toggle state */
+.hxpx-button:not(.pxDisabled):active > table, .hxpx-button.active:not(.pxDisabled) > table, .hxpx-button.hxpx-toggled > table {
+  .box-shadow(inset 0 3px 5px rgba(0,0,0,.250));
+}
