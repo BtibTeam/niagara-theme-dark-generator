@@ -1,6 +1,8 @@
 node_modules/
 .idea/
 build/
+src/hx/theme.css
+src/ux/theme.css
 npm-debug.log
 yarn.lock
 themeBtib-ux.iml
