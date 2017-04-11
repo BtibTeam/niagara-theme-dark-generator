@@ -10,9 +10,10 @@ call %~dp0.lib/npm.cmd install
 call %~dp0.lib/node.exe -e "require('grunt').tasks('less');"
 popd
 :: build script
+if "%1" == "--skip" goto :DONE
 call %~dp0.lib/gradlew.bat build
-goto :END
-
 
 :END
 pause
+
+:DONE
