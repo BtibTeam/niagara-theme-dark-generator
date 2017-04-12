@@ -5,6 +5,7 @@ Use this module to build your brand theme for Niagara.
 ## Prerequisites
 
 __NIAGARA_HOME__ is set in your environment variables  
+Node JS and NPM must be installed  
 
 ## Getting Started
 
