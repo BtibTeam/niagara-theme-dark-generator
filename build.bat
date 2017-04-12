@@ -5,9 +5,9 @@ set /p Input=Dossier du module a compiler ? (ex: themeBtib-ux) :
 pushd "%Input%" || goto :END
 
 :: install dev dependencies
-call %~dp0.lib/npm.cmd install
+call npm install
 :: compile less files
-call %~dp0.lib/node.exe -e "require('grunt').tasks('less');"
+call node -e "require('grunt').tasks('less');"
 popd
 :: build script
 if "%1" == "--skip" goto :DONE
