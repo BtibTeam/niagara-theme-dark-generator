@@ -42,7 +42,7 @@ vorpal
 
                 let name = ls.getItem("theme-name");
                 if (!name) {
-                    return cb(null, null);
+                    return cb(null);
                 }
 
                 v.prompt({
