@@ -18,18 +18,29 @@ let ls = vorpal.localStorage;
 
 vorpal
     .command("create")
+    .option("-n --name [name]", "set the name of the theme")
+    .option("-d --description [description]", "set the description of the theme")
+    .option("-h --niagara-home [niagara]", "set the niagara home env variable")
     .action(function execute(args, callback) {
 
         let v = this;
+        // set default values, make sur falsey values are undefined
         let data = {
+            name: args.options.name || undefined,
+            description: args.options.description || undefined,
+            niagara: args.options["niagara-home"] || undefined,
             vendor: "BTIB",
             symbol: "tgen"
         };
         // Do all the necessary processing to build a template
         async.waterfall([
             function checkExistingName(cb) {
-                let name = ls.getItem("theme-name");
+                // skip if name already set with args
+                if (data.name) {
+                    return cb();
+                }
 
+                let name = ls.getItem("theme-name");
                 if (!name) {
                     return cb(null, null);
                 }
@@ -42,14 +53,14 @@ vorpal
                 }, function (result) {
 
                     data.name = result.continue ? name : undefined;
-                    cb(null, result.continue)
+                    cb(null)
 
                 });
 
             },
-            function askForName(keep, cb) {
-
-                if (keep) {
+            function askForName(cb) {
+                // skip if name already set with args
+                if (data.name) {
                     return cb();
                 }
 
@@ -73,10 +84,15 @@ vorpal
                 });
             },
             function checkExistingDescription(cb) {
+                // skip if description already set with args
+                if (data.description) {
+                    return cb();
+                }
+
                 let description = ls.getItem(data.name + "-desc");
 
                 if (!description) {
-                    return cb(null, null);
+                    return cb(null);
                 }
 
                 v.prompt({
@@ -87,14 +103,14 @@ vorpal
                 }, function (result) {
 
                     data.description = result.continue ? description : undefined;
-                    cb(null, result.continue)
+                    cb(null)
 
                 });
 
             },
-            function askForDescription(keep, cb) {
+            function askForDescription(cb) {
                 // We want to keep the existing description, simply skip this method
-                if (keep) {
+                if (data.description) {
                     return cb();
                 }
 
@@ -112,11 +128,14 @@ vorpal
                 });
             },
             function checkExistingNiagaraHome(cb) {
+                if (data.niagara) {
+                    return cb();
+                }
                 // Get the niagara home, prefered from localstorage, then in env var
                 let niagara = ls.getItem("niagara-home") || process.env.NIAGARA_HOME;
 
                 if (!niagara) {
-                    return cb(null, null);
+                    return cb();
                 }
 
                 v.prompt({
@@ -127,14 +146,14 @@ vorpal
                 }, function (result) {
 
                     data.niagara = result.continue ? niagara : undefined;
-                    cb(null, result.continue)
+                    cb(null)
 
                 });
 
             },
-            function askForNiagaraHome(keep, cb) {
+            function askForNiagaraHome(cb) {
                 // We want to keep the existing description, simply skip this method
-                if (keep) {
+                if (data.niagara) {
                     return cb();
                 }
 
@@ -283,8 +302,10 @@ vorpal
 
 /************** Entry Point *******************/
 
+// Disable interactive CLI
 if (["delete", "get-folder"].lastIndexOf(process.argv[2]) === -1 ) {
     vorpal.show();
 }
 
+// Parse the command from the command line
 vorpal.parse(process.argv);

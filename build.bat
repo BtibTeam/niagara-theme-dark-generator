@@ -1,6 +1,6 @@
 @echo off
 
-call node %~dp0.lib/index.js create
+call node %~dp0.lib/index.js create || goto :END
 
 :: change directory or exit
 pushd .tmp || goto :END
@@ -16,8 +16,9 @@ call grunt less
 
 popd
 
-:: build script
 if "%1" == "--skip" goto :DONE
+
+:: build script
 call %~dp0.lib/gradlew.bat build
 call %~dp0.lib/gradlew.bat --stop
 
