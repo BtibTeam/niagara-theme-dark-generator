@@ -49,7 +49,7 @@ vorpal
                     type: "confirm",
                     name: "continue",
                     default: true,
-                    message: "Voulez-vous garder le nom: "+ name +" ? "
+                    message: "Do you want to keep the name : "+ name +" ? "
                 }, function (result) {
 
                     data.name = result.continue ? name : undefined;
@@ -70,7 +70,7 @@ vorpal
                     type: "input",
                     name: "name",
                     default: def,
-                    message: "Quel est le nom pour votre theme ? (Doit commencer par 'theme')",
+                    message: "What is the name of the theme ? (MUST begin with 'theme')",
                     validate: function(input) {
                         return input.lastIndexOf("theme", 0) === 0;
                     }
@@ -99,7 +99,7 @@ vorpal
                     type: "confirm",
                     name: "continue",
                     default: true,
-                    message: "Voulez-vous garder la description : "+ description +" ? "
+                    message: "Do you want to keep the existing description : "+ description +" ? "
                 }, function (result) {
 
                     data.description = result.continue ? description : undefined;
@@ -118,7 +118,7 @@ vorpal
                     type: "input",
                     name: "description",
                     default: "",
-                    message: "Indiquez une courte description pour le theme : "
+                    message: "Give a short description for your theme : "
                 }, function (result) {
 
                     data.description = result.description;
@@ -142,7 +142,7 @@ vorpal
                     type: "confirm",
                     name: "continue",
                     default: true,
-                    message: "Voulez-vous utiliser le dossier niagara : "+ niagara +" ? "
+                    message: "Use Niagara folder : "+ niagara +" ? "
                 }, function (result) {
 
                     data.niagara = result.continue ? niagara : undefined;
@@ -170,7 +170,7 @@ vorpal
                     type: "input",
                     name: "niagara",
                     default: def,
-                    message: "Indiquez le chemin d'installation de niagara : ",
+                    message: "Give the filepath to the Niagara installation folder : ",
                     validate: function(input) {
                         try {
                             fs.readdirSync(input);
