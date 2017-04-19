@@ -38,7 +38,7 @@ niagaraRoots.collect({ file(it) }).findAll({ it.exists() }).each { File projectR
 }
 
 // Set up the project tree - no need to modify
-rootProject.name = "themeBtib"
+rootProject.name = "{{name}}"
 rootProject.children.each { project ->
     project.projectDir = discoveredProjects[project.name]
     project.buildFileName = "${project.name}.gradle"

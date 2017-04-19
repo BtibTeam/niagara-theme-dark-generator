@@ -1,9 +1,0 @@
-node_modules/
-.idea/
-build/
-src/hx/theme.css
-src/ux/theme.css
-src/less/maps/
-npm-debug.log
-yarn.lock
-themeBtib-ux.iml
