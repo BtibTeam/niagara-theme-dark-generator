@@ -49,7 +49,7 @@ vorpal
                     type: "confirm",
                     name: "continue",
                     default: true,
-                    message: "Do you want to keep the name : "+ name +" ? "
+                    message: "Do you want to keep the name : " + name + " ? "
                 }, function (result) {
 
                     data.name = result.continue ? name : undefined;
@@ -99,7 +99,7 @@ vorpal
                     type: "confirm",
                     name: "continue",
                     default: true,
-                    message: "Do you want to keep the existing description : "+ description +" ? "
+                    message: "Do you want to keep the existing description : " + description + " ? "
                 }, function (result) {
 
                     data.description = result.continue ? description : undefined;
@@ -247,7 +247,7 @@ vorpal
                     },
                     // theme.gradle
                     function (c) {
-                        v.log("Process template for "+ build.addRuntime(data.name) +".gradle");
+                        v.log("Process template for " + build.addRuntime(data.name) + ".gradle");
                         build.compileTemplate("theme", function (err, template) {
                             if (err) {
                                 return c(err);
