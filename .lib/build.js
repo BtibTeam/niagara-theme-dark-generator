@@ -65,9 +65,9 @@ module.exports = app = {
      * Wrapper around the copy function
      * Copy files in .tmp/theme<name>-ux
      */
-    copyFile: function copyFile(src, dest, callback) {
+    copyFile: function copyFile(src, name, callback) {
         fs.copy(path.join(__dirname, "templates", src),
-                path.join(CWD, TEMP_DIR, name + RUNTIME_SUF, dest),
+                path.join(CWD, TEMP_DIR, name + RUNTIME_SUF, src),
                 callback);
     },
 

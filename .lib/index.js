@@ -14,11 +14,6 @@ const CWD = process.cwd(),
 vorpal.localStorage("btib-theme-generator");
 let ls = vorpal.localStorage;
 
-/*
- * ls.getItem("theme-name");
- * ls.setItem("theme-name", "themeBtib");
- */
-
 /************** Commands *******************/
 
 vorpal
@@ -36,7 +31,7 @@ vorpal
                 let name = ls.getItem("theme-name");
 
                 if (!name) {
-                    cb(null, null);
+                    return cb(null, null);
                 }
 
                 v.prompt({
@@ -121,7 +116,7 @@ vorpal
                 let niagara = ls.getItem("niagara-home") || process.env.NIAGARA_HOME;
 
                 if (!niagara) {
-                    cb(null, null);
+                    return cb(null, null);
                 }
 
                 v.prompt({
@@ -185,6 +180,10 @@ vorpal
                 ls.setItem(data.name + "-version", data.version);
                 cb();
             },
+            function refactorNiagaraHome(cb) {
+                data.niagara = data.niagara.replace(/\\/g, "/");
+                cb();
+            },
             function compileTemplates(cb) {
 
                 async.series([
@@ -195,6 +194,18 @@ vorpal
                     function(c) {
                         v.log("Copy sources");
                         build.copySources(data.name, c);
+                    },
+                    function(c) {
+                        v.log("Copy package.json");
+                        build.copyFile("package.json", data.name, c);
+                    },
+                    function(c) {
+                        v.log("Copy Gruntfile");
+                        build.copyFile("Gruntfile.js", data.name, c);
+                    },
+                    function(c) {
+                        v.log("Copy mustache template");
+                        build.copyFile("cssTemplate.mustache", data.name, c);
                     },
                     // Build.gradle
                     function (c) {
@@ -249,7 +260,18 @@ vorpal
     .command("delete")
     .action(function execute(args, callback) {
 
+        this.log("remove temporary folder");
         build.deleteArborescence(callback);
+
+    });
+
+vorpal
+    .command("get-folder")
+    .action(function execute(args, callback) {
+
+        let name = ls.getItem("theme-name");
+
+        this.log(build.addRuntime(name));
 
     });
 
@@ -257,6 +279,8 @@ vorpal
 
 /************** Entry Point *******************/
 
-vorpal
-    .show()
-    .parse(process.argv);
+if (["delete", "get-folder"].lastIndexOf(process.argv[2]) === -1 ) {
+    vorpal.show();
+}
+
+vorpal.parse(process.argv);
