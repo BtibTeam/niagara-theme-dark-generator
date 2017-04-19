@@ -30,9 +30,9 @@ module.exports = app = {
     },
 
     /**
-     *
+     * Create a file given its rendered name. It will automatically fetch the template file
      */
-    createTemplate: function createTemplate(file, data, callback) {
+    createFile: function createFile(file, data, callback) {
         app.compileTemplate(file, function (err, template) {
             if (err) {
                 return callback(err);
@@ -68,6 +68,16 @@ module.exports = app = {
     copyFile: function copyFile(src, name, callback) {
         fs.copy(path.join(__dirname, "templates", src),
                 path.join(CWD, TEMP_DIR, name + RUNTIME_SUF, src),
+                callback);
+    },
+
+    /**
+     *  Rename the folder theme in imageOverrides with the real theme name
+     */
+    moveThemeImageOverride: function moveThemeImageOverride(name, callback) {
+        fs.move(path.join(CWD, TEMP_DIR, name + RUNTIME_SUF, "src", "imageOverrides", "theme"),
+                path.join(CWD, TEMP_DIR, name + RUNTIME_SUF, "src", "imageOverrides", name),
+                {overwrite: true},
                 callback);
     },
 

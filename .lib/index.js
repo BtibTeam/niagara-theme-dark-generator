@@ -207,20 +207,24 @@ vorpal
                         v.log("Copy mustache template");
                         build.copyFile("cssTemplate.mustache", data.name, c);
                     },
+                    function(c) {
+                        v.log("Rename theme override");
+                        build.moveThemeImageOverride(data.name, c);
+                    },
                     // Build.gradle
                     function (c) {
                         v.log("Process template for build.gradle");
-                        build.createTemplate("build.gradle", data, c);
+                        build.createFile("build.gradle", data, c);
                     },
                     // settings.gradle
                     function (c) {
                         v.log("Process template for settings.gradle");
-                        build.createTemplate("settings.gradle", data, c);
+                        build.createFile("settings.gradle", data, c);
                     },
                     // vendor.gradle
                     function (c) {
                         v.log("Process template for vendor.gradle");
-                        build.createTemplate("vendor.gradle", data, c);
+                        build.createFile("vendor.gradle", data, c);
                     },
                     // theme.gradle
                     function (c) {
@@ -237,7 +241,7 @@ vorpal
                     // module-include.xml
                     function (c) {
                         v.log("Process template on for module-include.xml");
-                        build.createTemplate(path.join(build.addRuntime(data.name), "module-include.xml"), data, c);
+                        build.createFile(path.join(build.addRuntime(data.name), "module-include.xml"), data, c);
                     }
                 ], function done(err, res) {
                     cb(err);
