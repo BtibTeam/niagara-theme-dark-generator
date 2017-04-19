@@ -1,0 +1,24 @@
+description = "{{description}}"
+niagaraModule {
+    moduleName="{{name}}"
+    preferredSymbol="{{symbol}}"
+    runtimeProfile="ux"
+}
+jar {
+    from('src') {
+        include 'fonts/'
+        include 'fx/'
+        include 'hx/'
+        include 'image/**/*.png'
+        include 'imageOverrides/**/*.png'
+        include 'less/**/*.*'
+        include 'nss/'
+        include 'sprite/'
+        include 'ux/'
+    }
+    from ('.') {
+        include 'cssTemplate.mustache'
+        include 'Gruntfile.js'
+        include 'package.json'
+    }
+}
