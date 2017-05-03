@@ -8,24 +8,24 @@
 }
 
 /* add default style to the button element and sub-elements */
-.hxpx-button, .hxpx-background-image, .hxpx-background {
+.hxpx-button:not(.hxpx-radioButton), .hxpx-button:not(.hxpx-radioButton) .hxpx-background-image, .hxpx-button:not(.hxpx-radioButton) .hxpx-background {
   .border-radius(4px);
   .transition(background-color 0.2s ease);
 }
 
 /* create default border */
-.hxpx-border {
+.hxpx-button:not(.hxpx-radioButton) .hxpx-border {
   .border-radius(4px);
   border: 1px solid #EEEEEE !important;
 }
 
 /* handle hover state */
-.hxpx-button:not(.pxDisabled):hover > table {
+.hxpx-button:not(.pxDisabled):not(.hxpx-radioButton):hover > table {
   .box-shadow(inset 0 3px 5px rgba(0,0,0,.175));
   background-color: rgba(0,0,0,0.075);
 }
 
 /* handle active & toggle state */
-.hxpx-button:not(.pxDisabled):active > table, .hxpx-button.active:not(.pxDisabled) > table, .hxpx-button.hxpx-toggled > table {
+.hxpx-button:not(.pxDisabled):not(.hxpx-radioButton):active > table, .hxpx-button.active:not(.pxDisabled) > table, .hxpx-button.hxpx-toggled > table {
   .box-shadow(inset 0 3px 5px rgba(0,0,0,.250));
 }
