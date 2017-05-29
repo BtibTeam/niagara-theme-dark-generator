@@ -19,6 +19,7 @@ let ls = vorpal.localStorage;
 vorpal
     .command("create")
     .option("-n --name [name]", "set the name of the theme")
+    .option("-v --vendor [vendor]", "set the name of the vendor (your enterprise name)")
     .option("-d --description [description]", "set the description of the theme")
     .option("-h --niagara-home [niagara]", "set the niagara home env variable")
     .action(function execute(args, callback) {
@@ -29,8 +30,8 @@ vorpal
             name: args.options.name || undefined,
             description: args.options.description || undefined,
             niagara: args.options["niagara-home"] || undefined,
-            vendor: "BTIB",
-            symbol: "tgen"
+            vendor: args.options.vendor || undefined,
+            symbol: "thg"
         };
         // Do all the necessary processing to build a template
         async.waterfall([
@@ -64,7 +65,7 @@ vorpal
                     return cb();
                 }
 
-                let def = ls.getItem("theme-name") || "themeBtib";
+                let def = ls.getItem("theme-name") || "themeActive";
 
                 v.prompt({
                     type: "input",
@@ -123,6 +124,50 @@ vorpal
 
                     data.description = result.description;
                     ls.setItem(data.name + "-desc", data.description);
+
+                    cb(null);
+                });
+            },
+            function checkExistingVendor(cb) {
+                // skip if vendor already set with args
+                if (data.vendor) {
+                    return cb();
+                }
+
+                let vendor = ls.getItem(data.name + "-vendor");
+
+                if (!vendor) {
+                    return cb(null);
+                }
+
+                v.prompt({
+                    type: "confirm",
+                    name: "continue",
+                    default: true,
+                    message: "Do you want to keep the existing vendor : " + vendor + " ? "
+                }, function (result) {
+
+                    data.vendor = result.continue ? vendor : undefined;
+                    cb(null)
+
+                });
+
+            },
+            function askForVendor(cb) {
+                // We want to keep the existing vendor, simply skip this method
+                if (data.vendor) {
+                    return cb();
+                }
+
+                v.prompt({
+                    type: "input",
+                    name: "vendor",
+                    default: "",
+                    message: "Give the name of the vendor (ie. your enterprise name) : "
+                }, function (result) {
+
+                    data.vendor = result.vendor;
+                    ls.setItem(data.name + "-vendor", data.vendor);
 
                     cb(null);
                 });
