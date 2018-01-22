@@ -14,24 +14,46 @@ cd "%~dp0\.."
 
 :: script based on /build.bat
 pushd .lib
-call npm install || EXIT /b %ERRORLEVEL%
+call npm install
+IF %ERRORLEVEL% NEQ 0 ( 
+   exit %ERRORLEVEL% 
+)
+
 popd
-call node .lib/index.js create -n themeActive -d "Default theme for BTIB modules" -h %NIAGARA_HOME% -v BTIB || EXIT /b %ERRORLEVEL%
+call node .lib/index.js create -n themeActive -d "Default theme for BTIB modules" -h %NIAGARA_HOME% -v BTIB
+IF %ERRORLEVEL% NEQ 0 ( 
+   exit %ERRORLEVEL% 
+)
 
 pushd .tmp 
 
 pushd themeActive-ux
 
-call npm install || EXIT /b %ERRORLEVEL%
-call grunt less || EXIT /b %ERRORLEVEL%
+call npm install
+IF %ERRORLEVEL% NEQ 0 ( 
+   exit %ERRORLEVEL% 
+)
+
+call grunt less
+IF %ERRORLEVEL% NEQ 0 ( 
+   exit %ERRORLEVEL% 
+)
 
 popd
 
-call "..\.lib\gradlew.bat" clean || EXIT /b %ERRORLEVEL%
-call "..\.lib\gradlew.bat" build || EXIT /b %ERRORLEVEL%
-call "..\.lib\gradlew.bat" --stop || EXIT /b %ERRORLEVEL%
+call "..\.lib\gradlew.bat" clean
+IF %ERRORLEVEL% NEQ 0 ( 
+   exit %ERRORLEVEL% 
+)
 
-exit /b
+call "..\.lib\gradlew.bat" build
+IF %ERRORLEVEL% NEQ 0 ( 
+   exit %ERRORLEVEL% 
+)
+
+call "..\.lib\gradlew.bat" --stop
+
+exit %ERRORLEVEL% 
 
 :removeJars
 del %NIAGARA_HOME%\modules\themeActive-* || (
