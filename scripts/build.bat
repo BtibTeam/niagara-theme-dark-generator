@@ -20,7 +20,7 @@ IF %ERRORLEVEL% NEQ 0 (
 )
 
 popd
-call node .lib/index.js create -n themeActive -d "Default theme for BTIB modules" -h %NIAGARA_HOME% -v BTIB
+call node .lib/index.js create -n themeActive -d "Default theme for BTIB modules" -h %NIAGARA_HOME% -v BTIB --no-check
 IF %ERRORLEVEL% NEQ 0 ( 
    exit %ERRORLEVEL% 
 )
