@@ -1,13 +1,13 @@
 /************** Imports *******************/
-let vorpal = require("vorpal")(),
-    path = require("path"),
-    fs = require("fs-extra"),
-    async = require("async"),
-    semver = require("semver");
+const vorpal = require("vorpal")();
+const path = require("path");
+const fs = require("fs-extra");
+const async = require("async");
+const semver = require("semver");
 
-const CWD = process.cwd(),
-      build = require("./build")
-      pack = require("./package.json");
+const CWD = process.cwd();
+const build = require("./build");
+const pack = require("./package.json");
 
 /************** Init *******************/
 
@@ -22,6 +22,7 @@ vorpal
     .option("-v --vendor [vendor]", "set the name of the vendor (your enterprise name)")
     .option("-d --description [description]", "set the description of the theme")
     .option("-h --niagara-home [niagara]", "set the niagara home env variable")
+    .option("--no-check", "Disable the version check and the automatic increase")
     .action(function execute(args, callback) {
 
         let v = this;
@@ -72,7 +73,7 @@ vorpal
                     name: "name",
                     default: def,
                     message: "What is the name of the theme ? (MUST begin with 'theme')",
-                    validate: function(input) {
+                    validate: function (input) {
                         return input.lastIndexOf("theme", 0) === 0;
                     }
                 }, function (result) {
@@ -187,7 +188,7 @@ vorpal
                     type: "confirm",
                     name: "continue",
                     default: true,
-                    message: "Use Niagara folder : "+ niagara +" ? "
+                    message: "Use Niagara folder : " + niagara + " ? "
                 }, function (result) {
 
                     data.niagara = result.continue ? niagara : undefined;
@@ -206,8 +207,8 @@ vorpal
                 let def = null;
                 try {
                     var folders = fs.readdirSync(path.join("C:", "Niagara"));
-                    def = path.join("C:", "Niagara", folders[folders.length-1]);
-                } catch(e) {
+                    def = path.join("C:", "Niagara", folders[folders.length - 1]);
+                } catch (e) {
                     v.log(e);
                 }
 
@@ -216,11 +217,11 @@ vorpal
                     name: "niagara",
                     default: def,
                     message: "Give the filepath to the Niagara installation folder : ",
-                    validate: function(input) {
+                    validate: function (input) {
                         try {
                             fs.readdirSync(input);
                             return true;
-                        } catch(e) {
+                        } catch (e) {
                             return false;
                         }
                     }
@@ -235,12 +236,15 @@ vorpal
             function updateVersion(cb) {
 
                 data.version = ls.getItem(data.name + "-version") || pack.version;
-                // Check if the generator version is greater than the current module version
-                if (semver.gt(pack.version, data.version)) {
-                    data.version = pack.version;
+
+                if (args.options.check) {
+                    // Check if the generator version is greater than the current module version
+                    if (semver.gt(pack.version, data.version)) {
+                        data.version = pack.version;
+                    }
+                    // Increase the patch number of the version
+                    data.version = semver.inc(data.version, "patch");
                 }
-                // Increase the patch number of the version
-                data.version = semver.inc(data.version, "patch");
                 ls.setItem(data.name + "-version", data.version);
                 cb();
             },
@@ -251,27 +255,27 @@ vorpal
             function compileTemplates(cb) {
 
                 async.series([
-                    function(c) {
+                    function (c) {
                         v.log("Create Arborescence");
                         build.createArborescence(data.name, c);
                     },
-                    function(c) {
+                    function (c) {
                         v.log("Copy sources");
                         build.copySources(data.name, c);
                     },
-                    function(c) {
+                    function (c) {
                         v.log("Copy package.json");
                         build.copyFile("package.json", data.name, c);
                     },
-                    function(c) {
+                    function (c) {
                         v.log("Copy Gruntfile");
                         build.copyFile("Gruntfile.js", data.name, c);
                     },
-                    function(c) {
+                    function (c) {
                         v.log("Copy mustache template");
                         build.copyFile("cssTemplate.mustache", data.name, c);
                     },
-                    function(c) {
+                    function (c) {
                         v.log("Rename theme override");
                         build.moveThemeImageOverride(data.name, c);
                     },
@@ -298,8 +302,8 @@ vorpal
                                 return c(err);
                             }
                             build.writeFile(template(data),
-                                            path.join(build.addRuntime(data.name), build.addRuntime(data.name) + ".gradle"),
-                                            c);
+                                path.join(build.addRuntime(data.name), build.addRuntime(data.name) + ".gradle"),
+                                c);
                         });
                     },
                     // module-include.xml
@@ -348,7 +352,7 @@ vorpal
 /************** Entry Point *******************/
 
 // Disable interactive CLI
-if (["delete", "get-folder"].lastIndexOf(process.argv[2]) === -1 ) {
+if (["delete", "get-folder"].lastIndexOf(process.argv[2]) === -1) {
     vorpal.show();
 }
 
