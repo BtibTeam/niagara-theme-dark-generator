@@ -52,6 +52,12 @@ IF %ERRORLEVEL% NEQ 0 (
 )
 
 call "..\.lib\gradlew.bat" --stop
+IF %ERRORLEVEL% NEQ 0 ( 
+   exit %ERRORLEVEL% 
+)
+
+popd
+call scripts\signer.bat themeActive-ux 4bK7veC6ZpJF4j936jcG
 
 exit %ERRORLEVEL% 
 
