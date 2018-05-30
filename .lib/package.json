@@ -1,6 +1,6 @@
 { 
  "name": "btib-theme-generator", 
- "version": "44.1.6", 
+ "version": "44.2.0", 
  "description": "build niagara theme automatically", 
  "main": "index.js", 
  "scripts": { 
