@@ -1,0 +1,53 @@
+@import (reference) "./palette.less";
+// url(/module/icons/sprite/sprite.png?ts=1496766937414) -72px -400px
+
+.bajaux-widget.ChartWidgetOuter {
+  .icon-icons-x16-add:before {
+    background: url(/module/themeActiveDark/sprite/dark/sprite.png) -72px -400px;
+  }
+
+  tbody tr {
+    td {
+      background-color: @bg-color-ad;
+      select {
+        background-color: @fg-color-ad;
+      }
+    }
+  }
+
+  //-360 -490
+  g {
+    &.titleDisplay text {
+      fill: @fg-color-ad;
+    }
+
+    &.x,
+    &.y {
+      line {
+        stroke: @fg-color-ad;
+      }
+      text {
+        fill: @fg-color-ad;
+      }
+    }
+  }
+
+  svg {
+    &.ChartWidget {
+      background-color: @bg-color-ad;
+    }
+
+    rect.line-chart-background {
+      fill: @bg-color-ad;
+    }
+  }
+}
+
+.webChart-menu-content .CommandButton .icon {
+  display: none;
+}
+
+.MenuWidget-container .webChart-menu div.CommandButton:hover {
+  background-color: #ededee;
+  color: #034398;
+}

@@ -1,11 +1,13 @@
-
 /**
  * Btib bajaux theme
  */
 
-@import (reference) '../palette.less';
-@import (reference) '../mixins.less';
-@import '../contextMenu.less';
+@import (reference) "../palette.less";
+@import (reference) "../mixins.less";
+@import "../contextMenu.less";
+@import "../alarm.less";
+@import "../webChart.less";
+@import "../liveChart.less";
 
 /* 
   Applied at the root of a ux Web App. The fonts should be
@@ -14,33 +16,37 @@
 */
 .ux-root {
   .default-font;
-  
+
   color: @fg-color;
   background-color: @bg-color;
 
-  input, select, button, textarea {
+  input,
+  select,
+  button,
+  textarea {
     .font-family();
   }
 
-  input[type=color],
-  input[type=date],
-  input[type=datetime],
-  input[type=datetime-local],
-  input[type=email],
-  input[type=month],
-  input[type=number],
-  input[type=password],
-  input[type=search],
-  input[type=text],
-  input[type=time],
-  input[type=url],
+  input[type="color"],
+  input[type="date"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="email"],
+  input[type="month"],
+  input[type="number"],
+  input[type="password"],
+  input[type="search"],
+  input[type="text"],
+  input[type="time"],
+  input[type="url"],
   textarea {
     border-width: 0;
     box-shadow: rgba(160, 160, 160, 0.75) 0px 0px 0px 1px inset;
     padding: 1px 3px;
     outline: none;
 
-    &[readonly], &[disabled] {
+    &[readonly],
+    &[disabled] {
       background-color: @disabled-bg-color;
       box-shadow: rgba(160, 160, 160, 0.5) 0px 0px 0px 1px inset;
     }
@@ -51,9 +57,6 @@
     outline: none;
   }
 }
-
-
-
 
 /* Button */
 .ux-btn {
@@ -77,7 +80,8 @@
     text-decoration: underline;
   }
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: @neutral-2;
     .box-shadow(0 2px 5px @neutral-5, inset 0 0 2px 1px @neutral-1;);
   }
@@ -104,16 +108,10 @@
   }
 }
 
-
-
-
 /* Toolbar */
 .ux-tb {
   background-color: @neutral-2;
 }
-
-
-
 
 /* Toolbar Buttons */
 .ux-btn-tb {
@@ -150,7 +148,7 @@
   }
 }
 
-.ux-btn-tb-default > span.display > span.icon > img  {
+.ux-btn-tb-default > span.display > span.icon > img {
   padding-bottom: 2px;
   border-bottom: 2px solid @primary;
 }
@@ -158,10 +156,10 @@
 /* Toolbar Button Group */
 .ux-btn-tb-group {
   white-space: nowrap;
-  
+
   & > .ux-btn-tb {
     min-height: 26px;
-    
+
     &:hover {
       background-color: @neutral-2;
     }
@@ -175,8 +173,6 @@
     }
   }
 }
-
-
 
 /* select dropdowns */
 .ux-select {
@@ -199,8 +195,6 @@
     }
   }
 }
-
-
 
 /* A window that might contain a Web App*/
 .ux-window {
@@ -228,9 +222,9 @@ button.ux-highlight,
 select.ux-highlight,
 a.ux-highlight {
   color: blue;
-  
+
   &:hover {
-    color: #6C6CFF;
+    color: #6c6cff;
   }
 
   &:disabled {
@@ -255,9 +249,6 @@ a.ux-highlight {
   border-right: solid lightGrey 1px;
 }
 
-
-
-
 /* Shadow effects */
 .ux-shadow {
   .box-shadow(0 0 5px @neutral-5);
@@ -265,9 +256,6 @@ a.ux-highlight {
 .ux-shadow-inset {
   .box-shadow(inset 0 0 5px @neutral-5);
 }
-
-
-
 
 /* Table */
 .ux-table {
@@ -284,7 +272,7 @@ a.ux-highlight {
       font-weight: normal;
       .font-size(16);
     }
-    
+
     tr {
       border-color: @neutral-2;
     }
@@ -295,12 +283,12 @@ a.ux-highlight {
 
     background-color: @row-bg;
     border: 1px solid @row-border;
-    
+
     &:hover {
       background-color: @hover-bg;
       border-color: @hover-bg;
     }
-    
+
     &.alt {
       @alt-row-border: darken(@row-border, 3%);
 
@@ -338,8 +326,6 @@ a.ux-highlight {
     }
   }
 }
-
-
 
 /*******************************************************************************
  * TODO: everything below is webEditors-specific and should not be in this file
@@ -380,29 +366,28 @@ a.ux-highlight {
   .box-shadow(1px 1px 2px 0px @neutral-5);
   .border-radius(20em);
 
-  background-color: rgb(66,66,66);
-  
+  background-color: rgb(66, 66, 66);
+
   &.hover {
-    background-color: rgb(87,87,87);
+    background-color: rgb(87, 87, 87);
   }
-  
+
   &.selected {
-    background-color: rgb(248,248,248);
+    background-color: rgb(248, 248, 248);
   }
-  
+
   &.selected:hover {
-    background-color: rgb(216,217,219);
+    background-color: rgb(216, 217, 219);
   }
 }
-
 
 .TitlePane {
   .border-radius(10px, 0, 0, 0);
 }
 
 .TitlePane > .header {
-   height: 36px;
- }
+  height: 36px;
+}
 
 .TitlePane > .content {
   top: 36px;
@@ -464,7 +449,9 @@ PropertySheetRow class.) */
 }
 
 /* if we're expanded, and the first row, add the top edge shadow and the modified shadow. */
-.PropertySheetRow-inline-expansion .editor.PropertySheetRow.modified > .col-display {
+.PropertySheetRow-inline-expansion
+  .editor.PropertySheetRow.modified
+  > .col-display {
   .box-shadow(@row-drop-shadow, @row-modified-shadow;);
 }
 
@@ -473,12 +460,29 @@ PropertySheetRow class.) */
   .box-shadow(@row-modified-shadow);
 }
 
-.editor.bajaux-readonly, .editor.bajaux-disabled {
-  &.type-baja-Value { input, select, textarea { background-color: @disabled-bg-color; color: @disabled-fg-color; } }
-  &.type-baja-Number { .prelabel, .postlabel { color: @disabled-fg-color; } }
-  &.type-baja-Boolean, .type-baja-Status > form { label { color: @disabled-fg-color; } }
+.editor.bajaux-readonly,
+.editor.bajaux-disabled {
+  &.type-baja-Value {
+    input,
+    select,
+    textarea {
+      background-color: @disabled-bg-color;
+      color: @disabled-fg-color;
+    }
+  }
+  &.type-baja-Number {
+    .prelabel,
+    .postlabel {
+      color: @disabled-fg-color;
+    }
+  }
+  &.type-baja-Boolean,
+  .type-baja-Status > form {
+    label {
+      color: @disabled-fg-color;
+    }
+  }
 }
-
 
 /***********
  * Scrollbar
@@ -502,22 +506,9 @@ PropertySheetRow class.) */
 }
 
 .WebShell ::-webkit-scrollbar-thumb:hover,
-.js-dialog-container ::-webkit-scrollbar-thumb:hover{
+.js-dialog-container ::-webkit-scrollbar-thumb:hover {
   background-color: #bbb;
   box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.75);
-}
-
-/*******************************************************************************
- * TODO: everything below is webChart-specific and should not be in this file
- ******************************************************************************/
-
-.webChart-menu-content .CommandButton .icon {
-  display: none;
-}
-
-.MenuWidget-container .webChart-menu div.CommandButton:hover {
-  background-color: #ededee;
-  color: #034398;
 }
 
 /*******************************************************************************
@@ -534,5 +525,3 @@ form.hx > div > .alarmconsole-background {
   font-weight: normal;
   .font-size(18);
 }
-
-
