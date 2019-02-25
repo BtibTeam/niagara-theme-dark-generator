@@ -8,7 +8,7 @@ module.exports = function runGrunt(grunt) {
       srcDir = /^src-imageOverrides-/,
       fileExtension = /\.(png|gif|bmp|jpg|jpeg)$/i,
       now = +new Date(),
-      moduleName = 'themeBtib',
+      moduleName = 'themeBtibDark',
       spriteUrl = '/module/' + moduleName + '/sprite/sprite.png?ts=' + now;
 
   grunt.initConfig({
@@ -75,12 +75,12 @@ module.exports = function runGrunt(grunt) {
         banner: '/* @noSnoop */',
         sourceMap: true,
         sourceMapBasepath: 'src/less',
-        sourceMapRootpath: '/module/themeBtib/less/'
+        sourceMapRootpath: '/module/themeBtibDark/less/'
       },
       hx: {
         options: {
           sourceMapFilename: 'src/less/maps/hx.map',
-          sourceMapURL: '/module/themeBtib/less/maps/hx.map'
+          sourceMapURL: '/module/themeBtibDark/less/maps/hx.map'
         },
         files: {
           'src/hx/theme.css': 'src/less/hx/*'
@@ -89,7 +89,7 @@ module.exports = function runGrunt(grunt) {
       ux: {
         options: {
           sourceMapFilename: 'src/less/maps/ux.map',
-          sourceMapURL: '/module/themeBtib/less/maps/ux.map'
+          sourceMapURL: '/module/themeBtibDark/less/maps/ux.map'
         },
         files: {
           'src/ux/theme.css': 'src/less/ux/*'
