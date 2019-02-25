@@ -1,16 +1,19 @@
 @import (reference) "./palette.less";
-// url(/module/icons/sprite/sprite.png?ts=1496766937414) -72px -400px
 
 .bajaux-widget.ChartWidgetOuter {
-  .icon-icons-x16-add:before {
-    background: url(/module/themeActiveDark/sprite/dark/sprite.png) -72px -400px;
-  }
+  // .icon-icons-x16-add:before {
+  //   background: url(/module/themeActiveDark/sprite/dark/sprite.png) -72px -400px;
+  // }
+  .widgetBar.ux-fixed-header {
+    background-color: @fg-color-ad;
+    z-index: 1; // Make the header upper the content
 
-  tbody tr {
-    td {
-      background-color: @bg-color-ad;
-      select {
-        background-color: @fg-color-ad;
+    tbody tr {
+      td {
+        background-color: @bg-color-ad;
+        select {
+          background-color: @fg-color-ad;
+        }
       }
     }
   }
