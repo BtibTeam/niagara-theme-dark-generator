@@ -7,11 +7,14 @@
     fill: @bg-color-ad;
   }
 
-  .highcharts-axis-labels,
-  .highcharts-legend-item.highcharts-line-series {
-    text {
-      color: @fg-color-ad !important;
-      fill: @fg-color-ad !important;
-    }
+  text.highcharts-title,
+  .highcharts-axis-labels text,
+  .highcharts-legend-item text {
+    color: @fg-color-ad !important;
+    fill: @fg-color-ad !important;
+  }
+
+  .highcharts-label text {
+    color: @fg-color-ad !important;
   }
 }
