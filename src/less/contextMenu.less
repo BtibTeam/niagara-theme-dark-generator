@@ -23,21 +23,27 @@ ul.context-menu-list {
     color: @context-menu-fg;
 
     .font-family;
-    .font-size(13);
+    .font-size(14);
     font-weight: normal;
 
     .context-menu-item .icon {
       display: none;
     }
+    
+    margin-left: -12px;
+    padding-left: 14px;
 
-    &.hover {
+    &:hover {
       background-color: @neutral-2;
       color: @secondary-1;
       font-weight: normal;
-      margin-left: -12px;
       margin-right: -12px;
-      padding-left: 14px;
       padding-right: 14px;
+    }
+    
+    &.context-menu-disabled {
+      color: @neutral-4;
+      background-color: @context-menu-bg;
     }
   }
 

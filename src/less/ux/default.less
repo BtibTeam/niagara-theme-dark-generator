@@ -41,9 +41,10 @@
   input[type="url"],
   textarea {
     border-width: 0;
-    box-shadow: rgba(160, 160, 160, 0.75) 0px 0px 0px 1px inset;
+    box-shadow: rgba(160, 160, 160, 0.75) 0 0 0 1px inset;
     padding: 1px 3px;
     outline: none;
+    -webkit-appearance: none;    
 
     &[readonly],
     &[disabled] {
@@ -74,7 +75,7 @@
   font-weight: bold;
   letter-spacing: 0.5px;
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: none;
 
   a& {
     text-decoration: underline;
@@ -105,6 +106,10 @@
   &.ux-toggled {
     background-color: @neutral-1;
     .box-shadow(inset 0 0 5px @neutral-5);
+  }
+	
+  .icon img {	
+    vertical-align: text-top;
   }
 }
 
@@ -146,6 +151,12 @@
     background-color: @neutral-1;
     .box-shadow(inset 0 0 4px @neutral-5);
   }
+
+  /* http://stackoverflow.com/a/5518143 */	
+  &::-moz-focus-inner {	
+    padding: 0;
+    border: 0;
+  }
 }
 
 .ux-btn-tb-default > span.display > span.icon > img {
@@ -153,6 +164,14 @@
   border-bottom: 2px solid @primary;
 }
 
+.ux-btn-tb .displayName:empty {
+   visibility: hidden;
+}
+
+.ux-btn-tb .displayName:not(:empty) {
+   margin-left: 0.25em;
+}
+  
 /* Toolbar Button Group */
 .ux-btn-tb-group {
   white-space: nowrap;
@@ -266,14 +285,14 @@ a.ux-highlight {
   @selected-row-bg: rgba(0, 0, 128, 0.15);
 
   .ux-table-head {
-    th {
+    th, .ux-table-head-cell {
       background-color: @neutral-2;
       color: @fg-color;
       font-weight: normal;
       .font-size(16);
     }
-
-    tr {
+    
+    tr, .ux-table-head-row {
       border-color: @neutral-2;
     }
   }
@@ -330,6 +349,11 @@ a.ux-highlight {
 /*******************************************************************************
  * TODO: everything below is webEditors-specific and should not be in this file
  ******************************************************************************/
+
+/* Progress Bar */	
+.ux-progress-bar {	
+  background-image: linear-gradient(to top, #b0cbf5, #d9e8ff);	
+}
 
 // WebShell ////////////////////////////////////////////////////////////////////
 
@@ -432,20 +456,29 @@ a.ux-highlight {
 @row-modified-shadow: inset 6px 0 0 -3px @modified-color;
 
 /* add box shadow to the first expanded row... */
-.PropertySheetRow-inline-expansion .editor.PropertySheetRow > td {
+.PropertySheetRow-inline-expansion .PropertySheetRow .col-display,
+.PropertySheetRow-inline-expansion .PropertySheetRow .col-commands,
+.PropertySheetRow-inline-expansion .PropertySheetRow .col-spacer,
+.PropertySheetRow-inline-expansion .PropertySheet.slotmode .PropertySheetRow > td,
+.PropertySheetRow-inline-expansion .PropertySheet.tablet-portrait-up .PropertySheetRow > td {
   .box-shadow(@row-drop-shadow);
+}
+
+/* if the first, non-expanded row is modified, just the modified shadow. */
+td.PropertySheetRow.modified > .col-display,
+td.PropertySheetRow.modified > .col-value,
+.PropertySheetRow-inline-expansion .PropertySheetRow ~ .PropertySheetRow.modified > .col-value {
+  .box-shadow(@row-modified-shadow);
 }
 
 /* ...but no box shadows on subsequent rows. (first-child won't work because 
 the first slot might be present but hidden. if hidden, it doesn't get the 
 PropertySheetRow class.) */
-.editor.PropertySheetRow ~ .editor.PropertySheetRow > td {
+.PropertySheet .PropertySheetRow ~ .PropertySheetRow > td,
+.PropertySheet .PropertySheetRow td.col-value,
+.PropertySheetRow-inline-expansion .PropertySheet .PropertySheetRow ~ .PropertySheetRow > td,
+.PropertySheetRow-inline-expansion .PropertySheet.tablet-portrait-up .PropertySheetRow ~ .PropertySheetRow > td {
   .box-shadow(none);
-}
-
-/* if the first, non-expanded row is modified, just the modified shadow. */
-.editor.PropertySheetRow.modified > .col-display {
-  .box-shadow(@row-modified-shadow);
 }
 
 /* if we're expanded, and the first row, add the top edge shadow and the modified shadow. */
@@ -456,6 +489,7 @@ PropertySheetRow class.) */
 }
 
 /* otherwise, just the modified shadow. */
+.editor.PropertySheetRow.modified > .col-display,
 .editor.PropertySheetRow ~ .editor.PropertySheetRow.modified > .col-display {
   .box-shadow(@row-modified-shadow);
 }
@@ -482,6 +516,13 @@ PropertySheetRow class.) */
       color: @disabled-fg-color;
     }
   }
+}
+
+.editor.TableWidget.fixedHeaders {
+  background-color: @neutral-2;
+}
+.editor.TableWidget.fixedHeaders .tableContainer {
+  background-color: @bg-color;
 }
 
 /***********
@@ -525,3 +566,195 @@ form.hx > div > .alarmconsole-background {
   font-weight: normal;
   .font-size(18);
 }
+
+/*******************************************************************************
+ * ToggleButtonGroup CSS 
+ ******************************************************************************/
+ .ux-toggle-btn-group{
+  text-align: center;
+}
+
+.ux-toggle-btn-group > button{
+  border-radius: 0;
+  margin: 0.25em 0.35em;
+  color: #000000;
+  background-color: #d3d3d3;
+}
+
+/* Tab Bar */
+.ux-tab-bar {
+text-align: left;
+& .ux-btn {
+  margin: 0;
+  .box-shadow(-1px 0 0 0 @neutral-5);
+  border-radius: 0;
+  border-left: none;
+  text-decoration: none;
+
+  &:hover, &:focus {
+    .box-shadow(-1px 0 0 0 @neutral-5);
+  }
+
+  &.ux-toggled {
+    color: @primary;
+    background: @bg-color;
+    border-bottom: solid @bg-color 1px;
+  }
+}
+}
+
+/*********************
+Pikaday Date editors
+*********************/
+
+.pika-lendar {
+@disabled-background: @disabled-bg-color;
+@disabled-foreground: @disabled-fg-color;
+@event-background: @secondary-1;
+@event-color: @context-menu-fg;
+@hover-background: @primary;
+@normal-color: @fg-color;
+@normal-background: @bg-color;
+
+// hack the button shapes with pseudo-elements.
+// TODO: remove, after NCCB-27845 is resolved.
+.border-radius-hack() {
+  display: block;
+  background: @event-background;
+  content: '';
+  position: absolute;
+  top: 1px; bottom: 1px; width: 1em;
+  z-index: -1;
+}
+
+.pika-single {
+  font-family: 'SourceSansPro', Arial, sans-serif;
+}
+.pika-row {
+  .pika-button {
+    background: @normal-background;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    color: @normal-color;
+    font-size: 11px;
+    height: 17px;
+    margin: 1px;
+    padding: 0;
+    text-align: center;
+    
+    &:hover {
+      color: @hover-background;
+    }
+  }
+  .has-event .pika-button {
+    background: @event-background;
+    color: @event-color;
+    &:hover {
+      color: lighten(@hover-background, 20%);
+    }
+  }
+  .event-run-start {
+    position: relative;
+    .pika-button {
+      border-radius: 1em;
+    }
+    &:not(.event-run-end):before {
+      .border-radius-hack;
+      right: -2px;
+    }
+  }
+  .event-run-end {
+    position: relative;
+    .pika-button {
+      border-radius: 1em;
+    }
+    &:not(.event-run-start):before {
+      .border-radius-hack;
+      left: -2px;
+    }
+  }
+  .is-disabled .pika-button {
+    background: @disabled-background;
+    color: @disabled-foreground;
+  }
+  .is-selected .pika-button {
+    background: lighten(@selection-background-color, 20%);
+  }
+}
+}
+
+/********************
+Scheduler
+********************/
+
+.DayEditor {
+.day {
+  .blocksDisplay {
+    .block {
+      border-right: 1px solid black;
+      border-bottom: 1px solid #ccc;
+      background-color: #fcfcfc;
+    }
+    .block0 {
+      border-top: 1px solid black;
+    }
+    .block7 {
+      border-bottom: 1px solid black;
+    }
+    .block:before {
+      border-top: 1px solid #eeeeee;
+      border-bottom: 1px solid #eeeeee;
+    }
+  }
+}
+}
+
+.WeekEditor {
+.weekdays {
+  .DayEditor:first-child {
+    .day {
+      .blocksDisplay {
+        .block {
+          border-left: 1px solid black;
+        }
+      }
+    }
+  }
+  .DayEditor:last-child {
+    .day {
+      .blocksDisplay {
+        .block {
+          border-right: 1px solid black;
+        }
+      }
+    }
+  }
+}
+}
+
+.SpecialEventsEditor {
+.calendarEventsTable {
+  thead {
+    background: @neutral-2;
+  }
+}
+.DayEditor {
+  .day {
+    .blocksDisplay {
+      .block {
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+      }
+    }
+  }
+}
+}
+
+@media only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px) {
+.ux-btn {
+  border-radius: 0.5em 0.5em 0.5em 0.5em;
+}
+}
+

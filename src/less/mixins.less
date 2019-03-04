@@ -2,10 +2,10 @@
  Mixins
 */
 
-.font-face(@font-family; @fonts-path; @font-name; @font-weight: normal) {
+.font-face(@font-family; @fonts-path; @font-name; @font-weight: normal; @font-local: local('?'); ) {
   font-family: @font-family;
   font-weight: @font-weight;
-  src: local('?'),
+  src: @font-local,
   url('@{fonts-path}@{font-name}.otf.woff') format('woff'),
   url('@{fonts-path}@{font-name}.ttf') format('truetype');
 }
