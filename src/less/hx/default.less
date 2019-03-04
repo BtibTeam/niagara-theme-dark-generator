@@ -9,6 +9,11 @@ body {
   background: @secondary-2;
 }
 
+textarea {
+  padding: 1px 2px;
+  line-height: 13px;
+}
+
 .hx-PathBar-border {
   .font-family();
   background: #ebebeb;
@@ -56,6 +61,11 @@ form.hx {
   background: @secondary-2;
   margin: 0;
   padding: 5px;
+}
+
+.hx-outer-content.hx-outer-fullscreen{
+  .abs-position(0);
+  padding: 0px;
 }
 
 .hx-inner-content {
@@ -115,7 +125,7 @@ table.table tr {
   border: none;
 }
 
-.pxButtonNormal > .hxpx-border,
+.pxButtonNormal > .hxpx-border
 {
   border-top: 1px solid #fff;
   border-left: 1px solid #fff;
@@ -176,3 +186,20 @@ div.schedule-HxScheduler-dayEvent {
 }
 
 
+/*******************************************************************************
+ * bajaux editors in HxPx views
+ ******************************************************************************/
+
+.hx-bajaux-editor {
+  .ux-select {
+    font-size: 11px;
+    padding: 0.1em 0;
+  }
+}
+
+.hx-popout-command.ux-btn-tb-group {
+  button.ux-btn-tb {
+    min-height: 11px;
+    padding: 0;
+  }
+}

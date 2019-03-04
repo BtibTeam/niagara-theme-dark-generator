@@ -1,0 +1,35 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'phantomjs',
+1 verbose cli   'grunt-cli' ]
+2 info using npm@3.10.10
+3 info using node@v6.10.1
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readGlobalPackageData
+7 silly fetchPackageMetaData phantomjs
+8 silly fetchPackageMetaData grunt-cli
+9 verbose stack Error: kill ENOSYS
+9 verbose stack     at exports._errnoException (util.js:1018:11)
+9 verbose stack     at process.kill (internal/process.js:190:13)
+9 verbose stack     at process.listener (C:\Program Files\nodejs\node_modules\npm\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:86:15)
+9 verbose stack     at emitNone (events.js:91:20)
+9 verbose stack     at process.emit (events.js:185:7)
+9 verbose stack     at processEmit (C:\Program Files\nodejs\node_modules\npm\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:146:32)
+9 verbose stack     at processEmit (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:146:32)
+9 verbose stack     at Signal.wrap.onsignal (internal/process.js:217:44)
+10 verbose cwd C:\Niagara\WORKSP~1\NIAGAR~1
+11 error Windows_NT 10.0.17134
+12 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "-g" "phantomjs" "grunt-cli"
+13 error node v6.10.1
+14 error npm  v3.10.10
+15 error code ENOSYS
+16 error errno ENOSYS
+17 error syscall kill
+18 error kill ENOSYS
+19 error If you need help, you may report this error at:
+19 error     <https://github.com/npm/npm/issues>
+20 verbose exit [ 1, true ]
