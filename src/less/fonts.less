@@ -3,7 +3,7 @@
 @fonts-path: '/module/themeBtib/fonts/';
 
 .font-family() {
-  font-family: SourceSansPro, sans-serif;
+  font-family: RobotoSlab, SourceSansPro, sans-serif;
 }
 
 .font-size(@val) {
@@ -15,6 +15,7 @@
   font-size:16px;
 }
 
+/** SourceSansPro **/
 @font-face {
   .font-face('SourceSansPro', @fonts-path, 'SourceSansPro-Regular');
 }
@@ -25,15 +26,18 @@
   .font-face('SourceSansPro', @fonts-path, 'SourceSansPro-Light', 100);
 }
 
-
+/** RobotoSlab **/
 @font-face {
-  .font-face('SourceSansPro', @fonts-path, 'SourceSansPro-Regular');
+  .font-face('RobotoSlab', @fonts-path, 'RobotoSlab-Regular');
 }
 @font-face {
-  .font-face('SourceSansPro', @fonts-path, 'SourceSansPro-Semibold', bold);
+  .font-face('RobotoSlab', @fonts-path, 'RobotoSlab-Bold', bold);
 }
 @font-face {
-  .font-face('SourceSansPro', @fonts-path, 'SourceSansPro-Light', 100);
+  .font-face('RobotoSlab', @fonts-path, 'RobotoSlab-Light', 300);
+}
+@font-face {
+  .font-face('RobotoSlab', @fonts-path, 'RobotoSlab-Thin', 100);
 }
 
 .defaultNssFont() {
