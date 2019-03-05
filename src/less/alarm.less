@@ -1,6 +1,6 @@
 @import (reference) "./palette.less";
 
-.bajaux-widget .dbMaintenance {
+.bajaux-widget.AlarmConsole {
   background-color: @bg-color-ad;
 
   label,
@@ -16,12 +16,22 @@
     background-color: @fg-color-ad;
   }
 
-  .tableContainer .alarmTable tr {
+  .editor.TableWidget.fixedHeaders .tableContainer {
     background-color: @bg-color-ad;
 
-    td,
-    span {
-      color: @fg-color-ad;
+    tr {
+      background-color: @bg-color-ad;
+
+      td,
+      span {
+        color: @fg-color-ad;
+      }
     }
+  }
+
+  // Icons
+
+  .icon-icons-x16-clock:before {
+    background: url(/module/themeActiveDark/sprite/dark/sprite.png) -290px -72px;
   }
 }

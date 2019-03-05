@@ -5,7 +5,6 @@ const fs = require("fs-extra");
 const async = require("async");
 const semver = require("semver");
 
-const CWD = process.cwd();
 const build = require("./build");
 const pack = require("./package.json");
 

@@ -1,14 +1,14 @@
-	@import (reference) "./mixins.less";
+@import (reference) "./mixins.less";
 
-	@fonts-path: "/module/themeActiveDark/fonts/";
+@fonts-path: "/module/themeActiveDark/fonts/";
 
-	.font-family() {
-	  font-family: RobotoSlab, SourceSansPro, sans-serif;
-	}
+.font-family() {
+  font-family: SourceSansPro, sans-serif;
+}
 
-	.font-size(@val) {
-	  font-size: ~"@{val}px";
-	}
+.font-size(@val) {
+  font-size: ~"@{val}px";
+}
 
 .default-font() {
   .font-family;
@@ -27,18 +27,19 @@
 }
 
 /** RobotoSlab **/
-@font-face {
-  .font-face('RobotoSlab', @fonts-path, 'RobotoSlab-Regular');
-}
-@font-face {
-  .font-face('RobotoSlab', @fonts-path, 'RobotoSlab-Bold', bold);
-}
-@font-face {
-  .font-face('RobotoSlab', @fonts-path, 'RobotoSlab-Light', 300);
-}
-@font-face {
-  .font-face('RobotoSlab', @fonts-path, 'RobotoSlab-Thin', 100);
-}
+// @TODO: enable when extension font.otf.woff is in the module
+// @font-face {
+//   .font-face('RobotoSlab', @fonts-path, 'RobotoSlab-Regular');
+// }
+// @font-face {
+//   .font-face('RobotoSlab', @fonts-path, 'RobotoSlab-Bold', bold);
+// }
+// @font-face {
+//   .font-face('RobotoSlab', @fonts-path, 'RobotoSlab-Light', 300);
+// }
+// @font-face {
+//   .font-face('RobotoSlab', @fonts-path, 'RobotoSlab-Thin', 100);
+// }
 
 .defaultNssFont() {
   .font-family();

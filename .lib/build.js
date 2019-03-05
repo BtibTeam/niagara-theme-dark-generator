@@ -1,6 +1,5 @@
 let fs = require("fs-extra"),
     path = require("path"),
-    async = require("async"),
     Handlebars = require("handlebars");
 
 const TEMP_DIR = ".tmp",
