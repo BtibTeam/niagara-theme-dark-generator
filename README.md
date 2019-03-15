@@ -1,6 +1,13 @@
 # Presentation
 This repository intends to make it very easy for a Niagara System Integrator to make its own theme without using IntelliJ or Eclipse, just answering a couple of questions on the console. The module is then built automatically and added to your modules. It also contains some enhancements on the classic Niagara theme with some widgets styling and a library of common images in several colors and sizes. 
 
+A dark Alarm Console
+![Black Alarm Console](https://user-images.githubusercontent.com/24372104/54438704-7ac4c500-4737-11e9-8cb9-140c074d11e3.png)
+
+A dark Chart
+![Dark Chart](https://user-images.githubusercontent.com/24372104/54438950-15250880-4738-11e9-9dab-79e2a8317be8.PNG)
+
+The CLI to build your theme in one minute
 ![image](https://user-images.githubusercontent.com/24372104/53259126-9a377780-36ce-11e9-9045-bf7e16706ac5.png)
 
 # Installation
